@@ -77,9 +77,6 @@ define( [
 						height: ' + vars.height + 'px; \n\
 						text-align: center; \n\
 					}\n\
-					#' + vars.id + ' text {\n\
-						font-size: 1em; \n\
-					}\n\
 				';
 				$("<style>").html(vars.css).appendTo("head");
 
@@ -117,9 +114,9 @@ define( [
 				function drawChart() {                
 					$scope.data = google.visualization.arrayToDataTable([
 						['Label', 'Value'],
-						[vars.title, vars.options.current],
+						// [vars.title, vars.options.current],
+						['', vars.options.current],
 					]);
-
 					$scope.options = {
 						max: vars.options.total,
 						width: $scope.element.width(), height: $scope.element.height(),
@@ -127,7 +124,6 @@ define( [
 						yellowFrom: vars.options.yellowFrom, yellowTo: vars.options.redFrom,
 						minorTicks: vars.options.minorTicks
 					};
-
 					$scope.chart = new google.visualization.Gauge(document.getElementById($scope.id+'_gauge'));
 					
 					$scope.chart.draw($scope.data, $scope.options);
